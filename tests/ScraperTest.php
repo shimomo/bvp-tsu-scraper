@@ -60,7 +60,7 @@ final class ScraperTest extends TestCase
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage(
-            "BVP\TsuScraper\Scrapers\ForecastScraper::scrapeYesterday() - " .
+            "BVP\TsuScraper\Scrapers\ForecastScraper::scrape() - " .
             "The specified key '.zyosou_cmt' is not found in the content of the URL: " .
             "'https://www.boatrace-tsu.com/modules/yosou/group-syussou.php?day=20250106&race=1'."
         );
