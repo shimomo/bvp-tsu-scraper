@@ -16,28 +16,28 @@ class ForecastScraper extends BaseScraper
 {
     /**
      * @param  string|int                           $raceNumber
-     * @param  \Carbon\CarbonInterface|string|null  $date
+     * @param  \Carbon\CarbonInterface|string|null  $raceDate
      * @return array
      */
-    public function scrape(string|int $raceNumber, CarbonInterface|string|null $date = null): array
+    public function scrape(string|int $raceNumber, CarbonInterface|string|null $raceDate = null): array
     {
         return array_merge(...[
-            $this->scrapeYesterday($raceNumber, $date),
-            $this->scrapeToday($raceNumber, $date),
+            $this->scrapeYesterday($raceNumber, $raceDate),
+            $this->scrapeToday($raceNumber, $raceDate),
         ]);
     }
 
     /**
      * @param  string|int                           $raceNumber
-     * @param  \Carbon\CarbonInterface|string|null  $date
+     * @param  \Carbon\CarbonInterface|string|null  $raceDate
      * @return array
      *
      * @throws \RuntimeException
      */
-    private function scrapeYesterday(string|int $raceNumber, CarbonInterface|string|null $date = null): array
+    private function scrapeYesterday(string|int $raceNumber, CarbonInterface|string|null $raceDate = null): array
     {
-        $date = Carbon::parse($date ?? 'today')->format('Ymd');
-        $crawlerUrl = sprintf($this->baseUrl, 'group-syussou', $date, $raceNumber);
+        $raceDate = Carbon::parse($raceDate ?? 'today')->format('Ymd');
+        $crawlerUrl = sprintf($this->baseUrl, 'group-syussou', $raceDate, $raceNumber);
         $crawler = Scraper::getInstance()->request('GET', $crawlerUrl);
         $forecasts = Scraper::filterByKeys($crawler, [
             '.zyosou_cmt',
@@ -90,13 +90,13 @@ class ForecastScraper extends BaseScraper
 
     /**
      * @param  string|int                           $raceNumber
-     * @param  \Carbon\CarbonInterface|string|null  $date
+     * @param  \Carbon\CarbonInterface|string|null  $raceDate
      * @return array
      */
-    private function scrapeToday(string|int $raceNumber, CarbonInterface|string|null $date = null): array
+    private function scrapeToday(string|int $raceNumber, CarbonInterface|string|null $raceDate = null): array
     {
-        $date = Carbon::parse($date ?? 'today')->format('Ymd');
-        $crawlerUrl = sprintf($this->baseUrl, 'cyokuzen', $date, $raceNumber);
+        $raceDate = Carbon::parse($raceDate ?? 'today')->format('Ymd');
+        $crawlerUrl = sprintf($this->baseUrl, 'cyokuzen', $raceDate, $raceNumber);
         $crawler = Scraper::getInstance()->request('GET', $crawlerUrl);
         $forecasts = Scraper::filterByKeys($crawler, [
             '.cyosou_cmt',
