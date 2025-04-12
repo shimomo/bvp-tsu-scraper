@@ -12,13 +12,13 @@ use Carbon\CarbonInterface;
 class CommentScraper extends BaseScraper implements CommentScraperInterface
 {
     /**
-     * @param  string|int                           $raceCode
+     * @param  string|int                           $raceNumber
      * @param  \Carbon\CarbonInterface|string|null  $date
      * @return never
      *
      * @throws \BadMethodCallException
      */
-    public function scrape(string|int $raceCode, CarbonInterface|string|null $date = null): never
+    public function scrape(string|int $raceNumber, CarbonInterface|string|null $date = null): never
     {
         throw new \BadMethodCallException(
             __METHOD__ . "() - The 'scrape' feature is currently not implemented."
