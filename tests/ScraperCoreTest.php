@@ -54,7 +54,7 @@ final class ScraperCoreTest extends TestCase
     /**
      * @return void
      */
-    public function testScrapeTimesWithRaceCode1AndDate20250106(): void
+    public function testThrowsExceptionWhenMethodIsNotImplementedInTimes(): void
     {
         $this->expectException(\BadMethodCallException::class);
         $this->expectExceptionMessage(
