@@ -63,6 +63,6 @@ final class ForecastScraperTest extends TestCase
             "Call to undefined method 'BVP\TsuScraper\Scrapers\BaseScraper::ghost()'."
         );
 
-        $this->scraper->ghost(1, '2025-01-06d');
+        $this->scraper->ghost(1, '2025-01-06');
     }
 }
