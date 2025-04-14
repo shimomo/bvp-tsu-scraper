@@ -43,7 +43,7 @@ final class TimeScraperTest extends TestCase
     /**
      * @return void
      */
-    public function testInvalidWithRaceCode1AndDate20250106(): void
+    public function testThrowsExceptionWhenMethodDoesNotExist(): void
     {
         $this->expectException(\BadMethodCallException::class);
         $this->expectExceptionMessage(
