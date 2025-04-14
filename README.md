@@ -12,5 +12,17 @@
 composer require bvp/tsu-scraper
 ```
 
+## Usage
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use BVP\TsuScraper\Scraper;
+
+print_r(Scraper::scrapeForecasts(12));
+print_r(Scraper::scrapeForecasts(12, '2025-04-09'));
+```
+
 ## License
 The BVP Tsu Scraper package is open source software licensed under the [MIT license](LICENSE).
