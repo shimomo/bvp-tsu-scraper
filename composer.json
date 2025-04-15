@@ -1,14 +1,26 @@
 {
+    "$schema": "https://getcomposer.org/schema.json",
     "name": "bvp/tsu-scraper",
     "description": "The BVP Tsu Scraper package for Boatrace.",
+    "keywords": [
+        "boatrace",
+        "japan",
+        "japanese",
+        "library",
+        "scraper"
+    ],
     "license": "MIT",
     "type": "library",
     "authors": [
         {
             "name": "shimomo",
-            "email": "developer@shimomo.net"
+            "email": "bvp@shimomo.net"
         }
     ],
+    "support": {
+        "issues": "https://github.com/shimomo/bvp-tsu-scraper/issues",
+        "source": "https://github.com/shimomo/bvp-tsu-scraper"
+    },
     "require": {
         "php": "^8.2",
         "bvp/scraper-core": "^4.0",
