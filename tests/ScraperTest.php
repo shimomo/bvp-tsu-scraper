@@ -28,6 +28,36 @@ final class ScraperTest extends TestCase
     /**
      * @return void
      */
+    public function testGetInstance(): void
+    {
+        Scraper::resetInstance();
+        $this->assertInstanceOf(ScraperInterface::class, Scraper::getInstance());
+    }
+
+    /**
+     * @return void
+     */
+    public function testCreateInstance(): void
+    {
+        Scraper::resetInstance();
+        $this->assertInstanceOf(ScraperInterface::class, Scraper::createInstance());
+    }
+
+    /**
+     * @return void
+     */
+    public function testResetInstance(): void
+    {
+        Scraper::resetInstance();
+        $instance1 = Scraper::getInstance();
+        Scraper::resetInstance();
+        $instance2 = Scraper::getInstance();
+        $this->assertNotSame($instance1, $instance2);
+    }
+
+    /**
+     * @return void
+     */
     public function testThrowsExceptionWhenMethodIsNotImplementedInComments(): void
     {
         $this->expectException(\BadMethodCallException::class);
@@ -80,35 +110,5 @@ final class ScraperTest extends TestCase
         );
 
         Scraper::ghost(1, '2025-01-06');
-    }
-
-    /**
-     * @return void
-     */
-    public function testGetInstance(): void
-    {
-        Scraper::resetInstance();
-        $this->assertInstanceOf(ScraperInterface::class, Scraper::getInstance());
-    }
-
-    /**
-     * @return void
-     */
-    public function testCreateInstance(): void
-    {
-        Scraper::resetInstance();
-        $this->assertInstanceOf(ScraperInterface::class, Scraper::createInstance());
-    }
-
-    /**
-     * @return void
-     */
-    public function testResetInstance(): void
-    {
-        Scraper::resetInstance();
-        $instance1 = Scraper::getInstance();
-        Scraper::resetInstance();
-        $instance2 = Scraper::getInstance();
-        $this->assertNotSame($instance1, $instance2);
     }
 }

@@ -121,9 +121,11 @@ class ForecastScraper extends BaseScraper
         $reporterTodayComment = Normalizer::normalize($forecasts['.cyosou_cmt'][0]);
         $reporterTodayCourse = '';
         $reporterTodayFocus = Normalizer::normalize($forecasts['.par-icon_wrap']);
+
         $reporterTodayFocusExacta = array_values(array_filter($reporterTodayFocus, function ($focus) {
             return (substr_count($focus, '-') + substr_count($focus, '=')) === 1;
         }));
+
         $reporterTodayFocusTrifecta = array_values(array_filter($reporterTodayFocus, function ($focus) {
             return (substr_count($focus, '-') + substr_count($focus, '=')) === 2 || str_contains($focus, 'BOX');
         }));
