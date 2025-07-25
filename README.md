@@ -1,27 +1,15 @@
 # BVP Tsu Scraper
 
 [![Build Status](https://github.com/shimomo/bvp-tsu-scraper/workflows/Tests/badge.svg)](https://github.com/shimomo/bvp-tsu-scraper/actions?query=workflow%3Atests)
-[![codecov](https://codecov.io/gh/shimomo/bvp-tsu-scraper/graph/badge.svg?token=1AC3RA42BF)](https://codecov.io/gh/shimomo/bvp-tsu-scraper)
+[![codecov](https://codecov.io/gh/shimomo/bvp-tsu-scraper/branch/5.x/graph/badge.svg?token=1AC3RA42BF)](https://codecov.io/gh/shimomo/bvp-tsu-scraper)
 [![PHP Version Require](https://poser.pugx.org/bvp/tsu-scraper/require/php)](https://packagist.org/packages/bvp/tsu-scraper)
 [![Latest Stable Version](https://poser.pugx.org/bvp/tsu-scraper/v/stable)](https://packagist.org/packages/bvp/tsu-scraper)
-[![Latest Unstable Version](https://poser.pugx.org/bvp/tsu-scraper/v/unstable)](https://packagist.org/packages/bvp/tsu-scraper)
+[![Latest Unstable Version](https://poser.pugx.org/bvp/tsu-scraper/v/unstable)](https://packagist.org/packages/bvp/tsu-scraper#5.x-dev)
 [![License](https://poser.pugx.org/bvp/tsu-scraper/license)](https://packagist.org/packages/bvp/tsu-scraper)
 
 ## Installation
 ```bash
 composer require bvp/tsu-scraper
-```
-
-## Usage
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-use BVP\TsuScraper\Scraper;
-
-print_r(Scraper::scrapeForecasts(12));
-print_r(Scraper::scrapeForecasts(12, '2025-04-09'));
 ```
 
 ## License
