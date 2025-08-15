@@ -7,12 +7,34 @@
 [![unstable](https://poser.pugx.org/bvp/tsu-scraper/v/unstable)](https://packagist.org/packages/bvp/tsu-scraper#5.x-dev)
 [![license](https://poser.pugx.org/bvp/tsu-scraper/license)](https://packagist.org/packages/bvp/tsu-scraper)
 
-## Installation
+BVP Tsu Scraper は、ボートレース津の公式サイトから記者予想をスクレイピングして取得できる PHP ライブラリです。
+
+## 📦 Requirements
+- PHP ^8.2
+- Composer
+- Carbon
+
+## 💾 Installation
 ```bash
 composer require bvp/tsu-scraper
 ```
 
-## Usage
+## ⚡ Usage
+
+### サポートメソッド一覧
+
+| メソッド | 説明 | 引数 |
+|---|---|---|
+| `Scraper::scrapeForecasts($raceNumber, $raceDate = null)` | 記者予想を取得 | `$raceNumber` : 1〜12<br>`$raceDate` : Carbon対応日付文字列またはCarbonインスタンス（省略時は当日） |
+
+**$raceDate の例**
+- `'2025-01-01'`
+- `'2025/01/01'`
+- `'yesterday'`
+- `Carbon::now()->subDay()`
+
+### 基本的な使い方
+
 ```php
 <?php
 
@@ -20,24 +42,24 @@ require __DIR__ . '/vendor/autoload.php';
 
 use BVP\TsuScraper\Scraper;
 
-// ------------------------------
-// 基本的な使い方
-// ------------------------------
-
-// scrapeForecasts($raceNumber, $raceDate = null)
-//
-// $raceNumber : レース番号 (1〜12)
-// $raceDate   : レース開催日（省略時は当日）
-//               - 文字列の場合: Carbon::parse() が解釈できる任意の形式（例: '2025-01-01', '2025/01/01', 'yesterday'）
-//               - Carbonインスタンスも可
-
-// 例: ボートレース津の公式サイトから2025年01月01日の1レースの記者予想を取得
+// 記者予想を取得
 $forecasts = Scraper::scrapeForecasts(1, '2025-01-01');
 
-// 取得結果を表示
 print_r($forecasts);
+```
 
-/*
+### Scraper::scrapeForecasts()
+
+```php
+// 例: ボートレース津の公式サイトから2025年01月01日の1レースの記者予想を取得
+$forecasts = Scraper::scrapeForecasts(1, '2025-01-01');
+print_r($forecasts);
+```
+
+<details>
+<summary>取得結果</summary>
+
+```php
 Array
 (
     [reporter_yesterday_comment_label] => 記者予想 前日コメント
@@ -83,8 +105,13 @@ Array
         )
 
 )
-*/
 ```
 
-## License
-The BVP Tsu Scraper is open source software licensed under the [MIT license](LICENSE).
+</details>
+
+## ⚠️ Notes
+- **スクレイピング対象の公式サイトの構造が変更された場合**、正しくデータを取得できなくなる可能性があります。
+- 利用時は対象サイトの利用規約を遵守してください。
+
+## 📄 License
+BVP Tsu Scraper は [MIT license](LICENSE) の元で公開されています。
