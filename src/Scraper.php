@@ -18,7 +18,10 @@ class Scraper implements ScraperInterface
      * @param  \BVP\TsuScraper\ScraperCoreInterface  $scraper
      * @return void
      */
-    public function __construct(private readonly ScraperCoreInterface $scraper) {}
+    public function __construct(private readonly ScraperCoreInterface $scraper)
+    {
+        //
+    }
 
     /**
      * @param  string  $name
